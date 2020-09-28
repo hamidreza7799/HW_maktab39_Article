@@ -10,6 +10,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import java.io.Serializable;
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class BaseRepositoryImpl<E extends BaseEntity<PK>, PK extends Serializable> implements BaseRepository<E , PK> {
     protected EntityManager entityManager;
@@ -69,6 +72,16 @@ public class BaseRepositoryImpl<E extends BaseEntity<PK>, PK extends Serializabl
         }catch (NoResultException ex){
             return new HashSet<>();
         }
+    }
+
+    @Override
+    public Set<E> findAll(Predicate<E> filter) {
+        return findAll().stream().filter(filter).collect(Collectors.toSet());
+    }
+
+    @Override
+    public <T> Set<T> findAll(Function<E, T> mapper) {
+        return findAll().stream().map(mapper).collect(Collectors.toSet());
     }
 
     @Override

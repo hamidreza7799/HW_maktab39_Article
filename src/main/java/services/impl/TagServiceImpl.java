@@ -19,7 +19,7 @@ public class TagServiceImpl extends BaseServiceImpl<Tag,Integer,TagRepository> i
     @Override
     public boolean printTags(){
         System.out.println("\t**********\tTags\t**********");
-        List<Tag> tags = this.findAll();
+        Set<Tag> tags = this.findAll();
         for (Tag tag : tags) {
             System.out.println("Id of tag is: " + tag.getId());
             System.out.println("Title of tag is: " + tag.getTitle());

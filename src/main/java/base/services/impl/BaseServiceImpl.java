@@ -6,7 +6,7 @@ import base.services.BaseService;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 public class BaseServiceImpl<E extends BaseEntity<PK>,PK extends Serializable,Repository extends BaseRepository<E,PK>> implements BaseService<E , PK> {
     protected Repository repository;
@@ -31,12 +31,12 @@ public class BaseServiceImpl<E extends BaseEntity<PK>,PK extends Serializable,Re
     }
 
     @Override
-    public List<E> findAll() {
+    public Set<E> findAll() {
         return this.repository.findAll();
     }
 
     @Override
-    public List<E> findByIdsIn(Collection<PK> ids) {
+    public Set<E> findByIdsIn(Collection<PK> ids) {
         return this.repository.findByIdsIn(ids);
     }
 }

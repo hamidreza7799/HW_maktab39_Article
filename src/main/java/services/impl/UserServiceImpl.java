@@ -11,7 +11,9 @@ import services.UserService;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public abstract class UserServiceImpl extends BaseServiceImpl<User, Integer, UserRepository> implements UserService {
 
@@ -54,7 +56,7 @@ public abstract class UserServiceImpl extends BaseServiceImpl<User, Integer, Use
         Role writerRole = roleService.findByTitle("Writer");
         if(writerRole == null)
             return null;
-        List<Role> newUserRole = new ArrayList<>();
+        Set<Role> newUserRole = new HashSet<>();
         newUserRole.add(writerRole);
         System.out.print("Enter a username: ");
         String username = SingleTonScanner.getScanner().nextLine();

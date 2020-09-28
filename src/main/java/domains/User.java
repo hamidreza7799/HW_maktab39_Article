@@ -3,15 +3,12 @@ package domains;
 import base.domains.BaseEntity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 public class User extends BaseEntity<Integer> {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(unique = true , nullable = false)
     private String username;
@@ -21,10 +18,11 @@ public class User extends BaseEntity<Integer> {
     private Date birthday;
     @Column(nullable = false)
     private String password;
-    //private Set<Article> articleSet;
-    @ManyToMany
+    @OneToMany(mappedBy = "creator" , cascade = CascadeType.ALL)
+    private Set<Article> articleSet = new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
-    private List<Role> userRoles;
+    private Set<Role> userRoles = new HashSet<>();
 
     @Override
     public Integer getId() {
@@ -68,12 +66,19 @@ public class User extends BaseEntity<Integer> {
         this.password = password;
     }
 
-    public List<Role> getUserRoles() {
+    public Set<Role> getUserRoles() {
         return userRoles;
     }
 
-    public void setUserRoles(List<Role> userRoles) {
+    public void setUserRoles(Set<Role> userRoles) {
         this.userRoles = userRoles;
     }
 
+    public Set<Article> getArticleSet() {
+        return articleSet;
+    }
+
+    public void setArticleSet(Set<Article> articleSet) {
+        this.articleSet = articleSet;
+    }
 }

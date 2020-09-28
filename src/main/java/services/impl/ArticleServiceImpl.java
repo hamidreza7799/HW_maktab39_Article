@@ -14,8 +14,8 @@ import services.TagService;
 import services.UserService;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -29,7 +29,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Integer, Articl
     public boolean printArticle() {
         System.out.println("\t\r**********\t\rArticles\t\r**********");
         boolean isEmpty = true;
-        List<Article> articles = this.findAll();
+        Set<Article> articles = this.findAll();
         for (Article article : articles) {
             if (article.getIsPublished()) {
                 isEmpty = false;
@@ -69,7 +69,7 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Integer, Articl
             return false;
         System.out.println("\t\r**********\t\rYour-Articles\t\r**********");
         boolean isEmpty = true;
-        List<Article> articles = this.findByCreatorUsername(username);
+        Set<Article> articles = this.findByCreatorUsername(username);
         for (Article article : articles) {
             isEmpty = false;
             System.out.println("The id of this article is: " + article.getId());
@@ -199,9 +199,9 @@ public class ArticleServiceImpl extends BaseServiceImpl<Article, Integer, Articl
     }
 
     @Override
-    public List<Article> findByCreatorUsername(String username) {
+    public Set<Article> findByCreatorUsername(String username) {
         if(username == null)
-            return new ArrayList<Article>();
+            return new HashSet<>();
         return this.repository.findByCreatorUsername(username);
     }
 

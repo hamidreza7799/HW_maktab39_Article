@@ -4,7 +4,7 @@ import base.domains.BaseEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 public interface BaseRepository<E extends BaseEntity<PK>, PK extends Serializable> {
 
@@ -14,7 +14,7 @@ public interface BaseRepository<E extends BaseEntity<PK>, PK extends Serializabl
 
     boolean deleteById(PK id);
 
-    List<E> findAll();
+    Set<E> findAll();
 
-    List<E> findByIdsIn(Collection<PK> ids);
+    Set<E> findByIdsIn(Collection<PK> ids);
 }

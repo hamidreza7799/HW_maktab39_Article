@@ -5,13 +5,13 @@ import base.domains.BaseEntity;
 import javax.persistence.*;
 import java.util.Date;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Article extends BaseEntity<Integer> {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Column(nullable = false)
     private String title;
@@ -19,22 +19,18 @@ public class Article extends BaseEntity<Integer> {
     private String brief;
     @Column(columnDefinition = "TEXT")
     private String content;
-    @Column(name = "create_date")
-    @Temporal(TemporalType.DATE)
+    @Column(name = "create_date") @Temporal(TemporalType.DATE)
     private Date createDate;
-    @Column(name = "last_update_date")
-    @Temporal(TemporalType.DATE)
+    @Column(name = "last_update_date") @Temporal(TemporalType.DATE)
     private Date lastUpdateDate;
     @Column(name = "is_published" ,columnDefinition = "boolean default false")
     private boolean isPublished;
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(optional = false)
     private User creator;
-    @ManyToOne
-    @JoinColumn(nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL) @JoinColumn(nullable = false)
     private Category category;
-    @ManyToMany
-    private Set<Tag> articleTags;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Tag> articleTags = new HashSet<>();
 
     @Override
     public Integer getId() {

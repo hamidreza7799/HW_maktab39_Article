@@ -11,6 +11,7 @@ import services.CategoryService;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Set;
 
 public class CategoryServiceImpl extends BaseServiceImpl<Category, Integer, CategoryRepository> implements CategoryService {
 
@@ -21,7 +22,7 @@ public class CategoryServiceImpl extends BaseServiceImpl<Category, Integer, Cate
     @Override
     public boolean printCategories() {
         System.out.println("\t**********\tCategories\t**********");
-        List<Category> categories = this.findAll();
+        Set<Category> categories = this.findAll();
         for (Category category : categories) {
             System.out.println("Title is: " + category.getTitle());
             System.out.println("Description is: " + category.getDescription());

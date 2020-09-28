@@ -7,7 +7,9 @@ import services.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class AdminServiceImpl extends WriterServiceImpl implements AdminService {
 
@@ -44,7 +46,7 @@ public class AdminServiceImpl extends WriterServiceImpl implements AdminService 
         Role writerRole = roleService.findByTitle("Writer");
         if(writerRole == null || adminRole == null)
             return false;
-        List<Role> newUserRole = new ArrayList<>();
+        Set<Role> newUserRole = new HashSet<>();
         newUserRole.add(adminRole);
         newUserRole.add(writerRole);
         System.out.print("Enter a username: ");
@@ -109,7 +111,7 @@ public class AdminServiceImpl extends WriterServiceImpl implements AdminService 
 
     @Override
     public boolean printWritersArticles(ArticleService articleService) {
-        List<User> WriteUsers = this.findAll();
+        Set<User> WriteUsers = this.findAll();
         boolean isEmpty = true;
         for(User user:WriteUsers)
             isEmpty = isEmpty && articleService.printArticle(user.getUsername());

@@ -9,9 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class BaseRepositoryImpl<E extends BaseEntity<PK>, PK extends Serializable> implements BaseRepository<E , PK> {
     protected EntityManager entityManager;
@@ -62,27 +60,27 @@ public class BaseRepositoryImpl<E extends BaseEntity<PK>, PK extends Serializabl
     }
 
     @Override
-    public List<E> findAll() {
+    public Set<E> findAll() {
         try {
             CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
             CriteriaQuery<E> criteria = builder.createQuery(this.classTypeParameter);
             criteria.select(criteria.from(this.classTypeParameter));
-            return this.entityManager.createQuery(criteria).getResultList();
+            return new HashSet<>(this.entityManager.createQuery(criteria).getResultList());
         }catch (NoResultException ex){
-            return new ArrayList<E>();
+            return new HashSet<>();
         }
     }
 
     @Override
-    public List<E> findByIdsIn(Collection<PK> ids) {
+    public Set<E> findByIdsIn(Collection<PK> ids) {
         try {
             CriteriaBuilder builder = this.entityManager.getCriteriaBuilder();
             CriteriaQuery<E> criteria = builder.createQuery(this.classTypeParameter);
             ParameterExpression<List> customIds = builder.parameter(List.class);
             criteria.where(criteria.from(this.classTypeParameter).get("id").in(customIds));
-            return this.entityManager.createQuery(criteria).setParameter("customIds", ids).getResultList();
+            return new HashSet<>(this.entityManager.createQuery(criteria).setParameter("customIds", ids).getResultList());
         }catch (NoResultException ex){
-            return new ArrayList<E>();
+            return new HashSet<>();
         }
     }
 }

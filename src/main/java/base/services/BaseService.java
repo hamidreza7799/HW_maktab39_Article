@@ -2,7 +2,7 @@ package base.services;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 public interface BaseService<E , PK extends Serializable> {
     E save(E e);
@@ -11,7 +11,7 @@ public interface BaseService<E , PK extends Serializable> {
 
     boolean deleteById(PK id);
 
-    List<E> findAll();
+    Set<E> findAll();
 
-    List<E> findByIdsIn(Collection<PK> ids);
+    Set<E> findByIdsIn(Collection<PK> ids);
 }

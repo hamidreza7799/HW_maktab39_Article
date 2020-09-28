@@ -4,8 +4,7 @@ import base.services.BaseService;
 import domains.Article;
 import domains.User;
 
-import java.io.IOException;
-import java.util.List;
+import java.util.Set;
 
 public interface ArticleService extends BaseService<Article,Integer> {
 
@@ -25,7 +24,7 @@ public interface ArticleService extends BaseService<Article,Integer> {
 
     boolean changeArticlePublishState(Article article);
 
-    List<Article> findByCreatorUsername(String username);
+    Set<Article> findByCreatorUsername(String username);
 
     Article findByCreatorUsernameArticleId(String username , int articleId);
 }

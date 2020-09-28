@@ -39,4 +39,11 @@ public class Role extends BaseEntity<Integer> {
     public void setRoleUsers(Set<User> roleUsers) {
         this.roleUsers = roleUsers;
     }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }

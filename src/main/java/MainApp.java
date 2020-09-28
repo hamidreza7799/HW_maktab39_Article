@@ -1,4 +1,6 @@
+import domains.app.Role;
 import domains.app.User;
+import domains.app.UserInfo;
 import domains.metadata.AppMetadata;
 import domains.metadata.TableColumnMetadata;
 import domains.metadata.TableMetadata;
@@ -23,6 +25,9 @@ import services.metadata.impl.TableMetadataServiceImpl;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class MainApp {
     private static ArticleService articleService;
@@ -93,6 +98,8 @@ public class MainApp {
         System.out.println("2 : Log-In user");
         System.out.println("3 : See all articles");
         System.out.println("4 : Meta data menu");
+        System.out.println("5 : Show information of all users");
+        System.out.println("6 : Show users in Tehran");
         System.out.println("other character : close app");
         System.out.print("What do you want: ");
         switch (SingleTonScanner.getScanner().nextLine()) {
@@ -119,6 +126,24 @@ public class MainApp {
             case "4":
                 User adminUser = adminService.logIn("Admin");
                 metadataMenu(adminUser);
+                return true;
+
+            case "5":
+                Function<User,UserInfo> mapper = user -> {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo.setUsername(user.getUsername());
+                    userInfo.setUserAddress(user.getUserAddress());
+                    userInfo.setUserRoles(user.getUserRoles());
+                    return userInfo;};
+                Set<UserInfo> users = adminService.findAll(mapper);
+                for(UserInfo user : users)
+                    System.out.println(user);
+                return true;
+            case "6":
+                Predicate<User> filter = user -> user.getUserAddress().getCity().toLowerCase().equals("tehran");
+                Set<User> adminUsers = adminService.findAll(filter);
+                for(User user : adminUsers)
+                    System.out.println(user);
                 return true;
             default:
                 return false;

@@ -32,4 +32,13 @@ public class UserInfo {
     public void setUserRoles(Set<Role> userRoles) {
         this.userRoles = userRoles;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "username='" + username + '\'' +
+                ", userAddress=" + userAddress +
+                ", userRoles=" + userRoles +
+                '}';
+    }
 }

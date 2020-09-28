@@ -90,4 +90,13 @@ public class User extends BaseEntity<Integer> {
     public void setUserAddress(Address userAddress) {
         this.userAddress = userAddress;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", birthday=" + birthday +
+                ", userAddress=" + userAddress +
+                '}';
+    }
 }

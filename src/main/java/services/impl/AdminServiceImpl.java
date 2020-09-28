@@ -1,6 +1,7 @@
 package services.impl;
 
 import domains.*;
+import embededClasses.Address;
 import helper.SingleTonScanner;
 import repositories.AdminRepository;
 import services.*;
@@ -61,12 +62,18 @@ public class AdminServiceImpl extends WriterServiceImpl implements AdminService 
         System.out.print("Enter your national-code: ");
         String nationalCode = SingleTonScanner.getScanner().nextLine();
         //get birthday
+        Address userAddress = new Address();
+        System.out.print("Enter your city: ");
+        userAddress.setCity(SingleTonScanner.getScanner().nextLine());
+        System.out.print("Enter your street: ");
+        userAddress.setStreet(SingleTonScanner.getScanner().nextLine());
         User newUser = new User();
         newUser.setUserRoles(newUserRole);
         newUser.setUsername(username);
         newUser.setNationalCode(nationalCode);
         newUser.setBirthday(null);
         newUser.setPassword(nationalCode);
+        newUser.setUserAddress(userAddress);
         this.save(newUser);
         return true;
     }

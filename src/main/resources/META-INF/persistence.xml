@@ -19,5 +19,6 @@
 			<!--<property name="javax.persistence.sql-load-script-source" value="data.sql" />-->
 		</properties>
 	</persistence-unit>
+
 </persistence>
 

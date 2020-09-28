@@ -1,10 +1,10 @@
 package domains;
 
 import base.domains.BaseEntity;
+import embededClasses.Address;
 
 import javax.persistence.*;
 import java.util.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class User extends BaseEntity<Integer> {
@@ -20,9 +20,10 @@ public class User extends BaseEntity<Integer> {
     private String password;
     @OneToMany(mappedBy = "creator" , cascade = CascadeType.ALL)
     private Set<Article> articleSet = new HashSet<>();
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
+    @ManyToMany(cascade = CascadeType.ALL) @JoinColumn(nullable = false)
     private Set<Role> userRoles = new HashSet<>();
+    @Embedded
+    private Address userAddress;
 
     @Override
     public Integer getId() {
@@ -80,5 +81,13 @@ public class User extends BaseEntity<Integer> {
 
     public void setArticleSet(Set<Article> articleSet) {
         this.articleSet = articleSet;
+    }
+
+    public Address getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(Address userAddress) {
+        this.userAddress = userAddress;
     }
 }

@@ -3,6 +3,7 @@ package services.impl;
 import base.services.impl.BaseServiceImpl;
 import domains.Role;
 import domains.User;
+import embededClasses.Address;
 import helper.SingleTonScanner;
 import repositories.UserRepository;
 import services.ArticleService;
@@ -70,12 +71,18 @@ public abstract class UserServiceImpl extends BaseServiceImpl<User, Integer, Use
         System.out.print("Enter your national-code: ");
         String nationalCode = SingleTonScanner.getScanner().nextLine();
         //get birthday
+        Address userAddress = new Address();
+        System.out.print("Enter your city: ");
+        userAddress.setCity(SingleTonScanner.getScanner().nextLine());
+        System.out.print("Enter your street: ");
+        userAddress.setStreet(SingleTonScanner.getScanner().nextLine());
         User newUser = new User();
         newUser.setUserRoles(newUserRole);
         newUser.setUsername(username);
         newUser.setNationalCode(nationalCode);
         newUser.setBirthday(null);
         newUser.setPassword(nationalCode);
+        newUser.setUserAddress(userAddress);
         this.save(newUser);
         return newUser;
     }

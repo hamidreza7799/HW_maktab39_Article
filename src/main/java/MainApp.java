@@ -30,7 +30,7 @@ public class MainApp {
         EntityManagerFactory entityManagerFactory = null;
         EntityManager entityManager = null;
         try{
-            entityManagerFactory = Persistence.createEntityManagerFactory("my-persistence-unit");
+            entityManagerFactory = Persistence.createEntityManagerFactory("data-persistence-unit");
             entityManager = entityManagerFactory.createEntityManager();
             articleRepository = new ArticleRepositoryImpl(entityManager);
             articleService = new ArticleServiceImpl(articleRepository);

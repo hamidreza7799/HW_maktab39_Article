@@ -1,59 +1,81 @@
 import domains.app.User;
+import domains.metadata.AppMetadata;
+import domains.metadata.TableColumnMetadata;
+import domains.metadata.TableMetadata;
 import helper.SingleTonScanner;
 import repositories.app.*;
 import repositories.app.impl.*;
+import repositories.metadata.AppMetadataRepository;
+import repositories.metadata.TableColumnMetadataRepository;
+import repositories.metadata.TableMetadataRepository;
+import repositories.metadata.impl.AppMetadataRepositoryImpl;
+import repositories.metadata.impl.TableColumnRepositoryImpl;
+import repositories.metadata.impl.TableMetadataRepositoryImpl;
 import services.app.*;
 import services.app.impl.*;
+import services.metadata.AppMetadataService;
+import services.metadata.TableColumnMetadataService;
+import services.metadata.TableMetadataService;
+import services.metadata.impl.AppMetadataServiceImpl;
+import services.metadata.impl.TableColumnMetadataServiceImpl;
+import services.metadata.impl.TableMetadataServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class MainApp {
-    private static ArticleRepository articleRepository;
     private static ArticleService articleService;
-    private static CategoryRepository categoryRepository;
     private static CategoryService categoryService;
-    private static WriterRepository writerRepository;
     private static WriterService writerService;
-    private static AdminRepository adminRepository;
     private static AdminService adminService;
-    private static RoleRepository roleRepository;
     private static RoleService roleService;
-    private static TagRepository tagRepository;
     private static TagService tagService;
+    private static AppMetadataService appMetadataService;
+    private static TableMetadataService tableMetadataService;
+    private static TableColumnMetadataService tableColumnMetadataService;
 
     public static void main(String[] args) {
-        EntityManagerFactory entityManagerFactory = null;
-        EntityManager entityManager = null;
+        EntityManagerFactory dataEntityManagerFactory = null;
+        EntityManager dataEntityManager = null;
+        EntityManagerFactory metadataEntityManagerFactory = null;
+        EntityManager metadataEntityManager = null;
         try{
-            entityManagerFactory = Persistence.createEntityManagerFactory("data-persistence-unit");
-            entityManager = entityManagerFactory.createEntityManager();
-            articleRepository = new ArticleRepositoryImpl(entityManager);
+            dataEntityManagerFactory = Persistence.createEntityManagerFactory("data-persistence-unit");
+            metadataEntityManagerFactory = Persistence.createEntityManagerFactory("metadata-persistence-unit");
+            dataEntityManager = dataEntityManagerFactory.createEntityManager();
+            metadataEntityManager = metadataEntityManagerFactory.createEntityManager();
+            ArticleRepositoryImpl articleRepository = new ArticleRepositoryImpl(dataEntityManager);
             articleService = new ArticleServiceImpl(articleRepository);
-            categoryRepository = new CategoryRepositoryImpl(entityManager);
+            CategoryRepositoryImpl categoryRepository = new CategoryRepositoryImpl(dataEntityManager);
             categoryService = new CategoryServiceImpl(categoryRepository);
-            writerRepository = new WriterRepositoryImpl(entityManager);
+            WriterRepositoryImpl writerRepository = new WriterRepositoryImpl(dataEntityManager);
             writerService = new WriterServiceImpl(writerRepository);
-            adminRepository = new AdminRepositoryImpl(entityManager);
+            AdminRepositoryImpl adminRepository = new AdminRepositoryImpl(dataEntityManager);
             adminService = new AdminServiceImpl(adminRepository);
-            roleRepository = new RoleRepositoryImpl(entityManager);
+            RoleRepositoryImpl roleRepository = new RoleRepositoryImpl(dataEntityManager);
             roleService = new RoleServiceImpl(roleRepository);
-            tagRepository = new TagRepositoryImpl(entityManager);
+            TagRepositoryImpl tagRepository = new TagRepositoryImpl(dataEntityManager);
             tagService = new TagServiceImpl(tagRepository);
+            AppMetadataRepository appMetadataRepository = new AppMetadataRepositoryImpl(metadataEntityManager);
+            appMetadataService = new AppMetadataServiceImpl(appMetadataRepository);
+            TableColumnMetadataRepository tableColumnMetadataRepository = new TableColumnRepositoryImpl(metadataEntityManager);
+            tableColumnMetadataService= new TableColumnMetadataServiceImpl(tableColumnMetadataRepository);
+            TableMetadataRepository tableMetadataRepository = new TableMetadataRepositoryImpl(metadataEntityManager);
+            tableMetadataService = new TableMetadataServiceImpl(tableMetadataRepository);
             System.out.println("Connection is successful.......");
             System.out.println("App is running.....");
             while (startMenu()) ;
             System.out.println("Close App...");
-            entityManager.close();
-            entityManagerFactory.close();
+            dataEntityManager.close();
+            dataEntityManagerFactory.close();
         } catch (Exception ex) {
             System.out.println("Exception was occur......");
-            if(entityManager != null){
-                entityManager.close();
+            if(dataEntityManager != null){
+                dataEntityManager.close();
             }
-            if (entityManagerFactory != null){
-                entityManagerFactory.close();
+            if (dataEntityManagerFactory != null){
+                dataEntityManagerFactory.close();
             }
         }
     }
@@ -62,6 +84,7 @@ public class MainApp {
         System.out.println("1 : Sign-Up user");
         System.out.println("2 : Log-In user");
         System.out.println("3 : See all articles");
+        System.out.println("4 : Meta data menu");
         System.out.println("other character : close app");
         System.out.print("What do you want: ");
         switch (SingleTonScanner.getScanner().nextLine()) {
@@ -83,6 +106,11 @@ public class MainApp {
                 return true;
             case "3":
                 showArticle();
+                return true;
+
+            case "4":
+                User adminUser = adminService.logIn("Admin");
+                metadataMenu(adminUser);
                 return true;
             default:
                 return false;
@@ -168,6 +196,12 @@ public class MainApp {
         }
     }
 
+    private static void metadataMenu(User adminUser){
+        if (adminUser == null)
+            return;
+
+    }
+
     private static void showArticle() {
         boolean isEmpty = articleService.printArticle();
         if (!isEmpty) {
@@ -189,4 +223,6 @@ public class MainApp {
 
 
     }
+
+
 }

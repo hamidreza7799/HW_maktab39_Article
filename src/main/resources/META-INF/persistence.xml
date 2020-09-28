@@ -5,7 +5,12 @@
 	<persistence-unit name="data-persistence-unit">
 		<description>Hibernate Tips</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<class>domains.app.Article</class>
+		<class>domains.app.Category</class>
+		<class>domains.app.Role</class>
+		<class>domains.app.Tag</class>
+		<class>domains.app.User</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
@@ -23,7 +28,10 @@
 	<persistence-unit name="metadata-persistence-unit">
 		<description>Hibernate Tips</description>
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<class>domains.metadata.AppMetadata</class>
+		<class>domains.metadata.TableColumnMetadata</class>
+		<class>domains.metadata.TableMetadata</class>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />

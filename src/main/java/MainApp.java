@@ -68,7 +68,9 @@ public class MainApp {
             while (startMenu()) ;
             System.out.println("Close App...");
             dataEntityManager.close();
+            metadataEntityManager.close();
             dataEntityManagerFactory.close();
+            metadataEntityManagerFactory.close();
         } catch (Exception ex) {
             System.out.println("Exception was occur......");
             if(dataEntityManager != null){
@@ -76,6 +78,12 @@ public class MainApp {
             }
             if (dataEntityManagerFactory != null){
                 dataEntityManagerFactory.close();
+            }
+            if(metadataEntityManager != null){
+                metadataEntityManager.close();
+            }
+            if (metadataEntityManagerFactory != null){
+                metadataEntityManagerFactory.close();
             }
         }
     }

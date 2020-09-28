@@ -1,11 +1,11 @@
-package services.impl;
+package services.app.impl;
 
 import base.services.impl.BaseServiceImpl;
 import domains.app.Category;
 import helper.Editor;
 import helper.SingleTonScanner;
 import repositories.app.CategoryRepository;
-import services.CategoryService;
+import services.app.CategoryService;
 
 import java.io.IOException;
 import java.util.Set;

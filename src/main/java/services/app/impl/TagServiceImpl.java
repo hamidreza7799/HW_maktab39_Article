@@ -1,10 +1,10 @@
-package services.impl;
+package services.app.impl;
 
 import base.services.impl.BaseServiceImpl;
 import domains.app.Tag;
 import helper.SingleTonScanner;
 import repositories.app.TagRepository;
-import services.TagService;
+import services.app.TagService;
 
 import java.util.HashSet;
 import java.util.Set;

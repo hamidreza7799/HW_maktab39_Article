@@ -1,4 +1,4 @@
-package services;
+package services.app;
 
 import domains.app.User;
 

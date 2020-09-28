@@ -1,4 +1,4 @@
-package services.impl;
+package services.app.impl;
 
 import base.services.impl.BaseServiceImpl;
 import domains.app.Article;
@@ -8,10 +8,10 @@ import domains.app.User;
 import helper.Editor;
 import helper.SingleTonScanner;
 import repositories.app.ArticleRepository;
-import services.ArticleService;
-import services.CategoryService;
-import services.TagService;
-import services.UserService;
+import services.app.ArticleService;
+import services.app.CategoryService;
+import services.app.TagService;
+import services.app.UserService;
 
 import java.io.IOException;
 import java.util.HashSet;

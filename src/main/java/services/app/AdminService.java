@@ -1,4 +1,4 @@
-package services;
+package services.app;
 
 public interface AdminService extends WriterService{
 

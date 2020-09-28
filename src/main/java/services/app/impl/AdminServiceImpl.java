@@ -1,10 +1,10 @@
-package services.impl;
+package services.app.impl;
 
 import domains.app.*;
 import embededClasses.Address;
 import helper.SingleTonScanner;
 import repositories.app.AdminRepository;
-import services.*;
+import services.app.*;
 
 import java.io.IOException;
 import java.util.HashSet;

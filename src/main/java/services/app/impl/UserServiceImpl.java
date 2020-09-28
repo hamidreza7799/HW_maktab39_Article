@@ -1,4 +1,4 @@
-package services.impl;
+package services.app.impl;
 
 import base.services.impl.BaseServiceImpl;
 import domains.app.Role;
@@ -6,8 +6,8 @@ import domains.app.User;
 import embededClasses.Address;
 import helper.SingleTonScanner;
 import repositories.app.UserRepository;
-import services.RoleService;
-import services.UserService;
+import services.app.RoleService;
+import services.app.UserService;
 
 import java.util.HashSet;
 import java.util.Set;

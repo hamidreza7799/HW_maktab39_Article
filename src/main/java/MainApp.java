@@ -2,8 +2,8 @@ import domains.app.User;
 import helper.SingleTonScanner;
 import repositories.app.*;
 import repositories.app.impl.*;
-import services.*;
-import services.impl.*;
+import services.app.*;
+import services.app.impl.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

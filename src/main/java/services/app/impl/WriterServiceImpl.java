@@ -1,12 +1,12 @@
-package services.impl;
+package services.app.impl;
 
 import domains.app.Article;
 import domains.app.User;
 import repositories.app.WriterRepository;
-import services.ArticleService;
-import services.CategoryService;
-import services.TagService;
-import services.WriterService;
+import services.app.ArticleService;
+import services.app.CategoryService;
+import services.app.TagService;
+import services.app.WriterService;
 
 public class WriterServiceImpl extends UserServiceImpl implements WriterService {
 

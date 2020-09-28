@@ -6,10 +6,10 @@ import repositories.metadata.TableColumnMetadataRepository;
 
 import javax.persistence.EntityManager;
 
-public class TableColumnRepositoeyImpl extends BaseRepositoryImpl<TableColumnMetadata,Integer>
+public class TableColumnRepositoryImpl extends BaseRepositoryImpl<TableColumnMetadata,Integer>
         implements TableColumnMetadataRepository {
 
-    public TableColumnRepositoeyImpl(EntityManager entityManager){
+    public TableColumnRepositoryImpl(EntityManager entityManager){
         super(TableColumnMetadata.class,entityManager);
     }
 }

@@ -1,7 +1,7 @@
 package services;
 
 import base.services.BaseService;
-import domains.User;
+import domains.app.User;
 
 public interface UserService extends BaseService<User,Integer> {
 

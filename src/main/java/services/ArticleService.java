@@ -1,8 +1,8 @@
 package services;
 
 import base.services.BaseService;
-import domains.Article;
-import domains.User;
+import domains.app.Article;
+import domains.app.User;
 
 import java.util.Set;
 

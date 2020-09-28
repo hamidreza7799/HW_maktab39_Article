@@ -1,7 +1,7 @@
-package repositories;
+package repositories.app;
 
 import base.repositories.BaseRepository;
-import domains.Category;
+import domains.app.Category;
 
 public interface CategoryRepository extends BaseRepository<Category,Integer> {
 

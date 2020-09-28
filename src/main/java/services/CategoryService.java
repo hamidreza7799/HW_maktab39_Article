@@ -1,7 +1,7 @@
 package services;
 
 import base.services.BaseService;
-import domains.Category;
+import domains.app.Category;
 
 import java.io.IOException;
 

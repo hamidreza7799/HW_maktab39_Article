@@ -1,16 +1,13 @@
 package services.impl;
 
 import base.services.impl.BaseServiceImpl;
-import domains.Category;
+import domains.app.Category;
 import helper.Editor;
 import helper.SingleTonScanner;
-import repositories.CategoryRepository;
-import repositories.impl.CategoryRepositoryImpl;
+import repositories.app.CategoryRepository;
 import services.CategoryService;
 
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Set;
 
 public class CategoryServiceImpl extends BaseServiceImpl<Category, Integer, CategoryRepository> implements CategoryService {

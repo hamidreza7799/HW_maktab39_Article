@@ -1,22 +1,20 @@
 package services.impl;
 
 import base.services.impl.BaseServiceImpl;
-import domains.Article;
-import domains.Category;
-import domains.Tag;
-import domains.User;
+import domains.app.Article;
+import domains.app.Category;
+import domains.app.Tag;
+import domains.app.User;
 import helper.Editor;
 import helper.SingleTonScanner;
-import repositories.ArticleRepository;
+import repositories.app.ArticleRepository;
 import services.ArticleService;
 import services.CategoryService;
 import services.TagService;
 import services.UserService;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class ArticleServiceImpl extends BaseServiceImpl<Article, Integer, ArticleRepository> implements ArticleService {

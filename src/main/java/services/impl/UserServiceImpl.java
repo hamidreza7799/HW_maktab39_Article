@@ -1,19 +1,15 @@
 package services.impl;
 
 import base.services.impl.BaseServiceImpl;
-import domains.Role;
-import domains.User;
+import domains.app.Role;
+import domains.app.User;
 import embededClasses.Address;
 import helper.SingleTonScanner;
-import repositories.UserRepository;
-import services.ArticleService;
+import repositories.app.UserRepository;
 import services.RoleService;
 import services.UserService;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public abstract class UserServiceImpl extends BaseServiceImpl<User, Integer, UserRepository> implements UserService {

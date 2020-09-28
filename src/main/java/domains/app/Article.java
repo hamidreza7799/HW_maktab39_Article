@@ -1,12 +1,10 @@
-package domains;
+package domains.app;
 
 import base.domains.BaseEntity;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity

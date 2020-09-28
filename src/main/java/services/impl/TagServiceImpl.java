@@ -1,13 +1,12 @@
 package services.impl;
 
 import base.services.impl.BaseServiceImpl;
-import domains.Tag;
+import domains.app.Tag;
 import helper.SingleTonScanner;
-import repositories.TagRepository;
+import repositories.app.TagRepository;
 import services.TagService;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class TagServiceImpl extends BaseServiceImpl<Tag,Integer,TagRepository> implements TagService {

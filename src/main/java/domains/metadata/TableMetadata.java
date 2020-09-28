@@ -1,18 +1,20 @@
-package domains;
+package domains.metadata;
+
+import base.domains.BaseEntity;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class TableMetadata{
+public class TableMetadata extends BaseEntity<Integer> {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "tbl_name" , nullable = false , unique = true)
     private String  tableName;
     @OneToMany(mappedBy = "tableMetadata")
-    private Set<TablecolumnMetadata> tablecolumnMetadataSet = new HashSet<>();
+    private Set<TableColumnMetadata> tableColumnMetadataSet = new HashSet<>();
     @Column(name = "tbl_def")
     private String tableDef;
 
@@ -32,12 +34,12 @@ public class TableMetadata{
         this.tableName = tableName;
     }
 
-    public Set<TablecolumnMetadata> getTablecolumnMetadataSet() {
-        return tablecolumnMetadataSet;
+    public Set<TableColumnMetadata> getTablecolumnMetadataSet() {
+        return tableColumnMetadataSet;
     }
 
-    public void setTablecolumnMetadataSet(Set<TablecolumnMetadata> tablecolumnMetadataSet) {
-        this.tablecolumnMetadataSet = tablecolumnMetadataSet;
+    public void setTablecolumnMetadataSet(Set<TableColumnMetadata> tablecolumnMetadataSet) {
+        this.tableColumnMetadataSet = tablecolumnMetadataSet;
     }
 
     public String getTableDef() {

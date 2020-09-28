@@ -1,8 +1,8 @@
-package repositories.impl;
+package repositories.app.impl;
 
 import base.repositories.impl.BaseRepositoryImpl;
-import domains.Role;
-import repositories.RoleRepository;
+import domains.app.Role;
+import repositories.app.RoleRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

@@ -1,9 +1,8 @@
 package services.impl;
 
-import domains.Article;
-import domains.User;
-import repositories.UserRepository;
-import repositories.WriterRepository;
+import domains.app.Article;
+import domains.app.User;
+import repositories.app.WriterRepository;
 import services.ArticleService;
 import services.CategoryService;
 import services.TagService;

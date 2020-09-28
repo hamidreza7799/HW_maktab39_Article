@@ -1,9 +1,8 @@
-package repositories.impl;
+package repositories.app.impl;
 
 import base.repositories.impl.BaseRepositoryImpl;
-import domains.Category;
-import domains.Tag;
-import repositories.TagRepository;
+import domains.app.Tag;
+import repositories.app.TagRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

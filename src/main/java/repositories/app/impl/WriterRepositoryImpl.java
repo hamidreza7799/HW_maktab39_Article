@@ -1,6 +1,6 @@
-package repositories.impl;
+package repositories.app.impl;
 
-import repositories.WriterRepository;
+import repositories.app.WriterRepository;
 
 import javax.persistence.EntityManager;
 

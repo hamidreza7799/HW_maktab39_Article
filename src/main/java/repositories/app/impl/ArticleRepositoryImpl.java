@@ -1,14 +1,13 @@
-package repositories.impl;
+package repositories.app.impl;
 
 import base.repositories.impl.BaseRepositoryImpl;
-import domains.Article;
-import domains.User;
-import repositories.ArticleRepository;
+import domains.app.Article;
+import domains.app.User;
+import repositories.app.ArticleRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 

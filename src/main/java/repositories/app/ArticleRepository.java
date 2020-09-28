@@ -1,7 +1,7 @@
-package repositories;
+package repositories.app;
 
 import base.repositories.BaseRepository;
-import domains.Article;
+import domains.app.Article;
 
 import java.util.Set;
 

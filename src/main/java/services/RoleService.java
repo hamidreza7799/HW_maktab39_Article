@@ -1,7 +1,7 @@
 package services;
 
 import base.services.BaseService;
-import domains.Role;
+import domains.app.Role;
 
 public interface RoleService extends BaseService<Role,Integer> {
 

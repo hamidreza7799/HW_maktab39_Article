@@ -1,6 +1,6 @@
-package repositories.impl;
+package repositories.app.impl;
 
-import repositories.AdminRepository;
+import repositories.app.AdminRepository;
 
 import javax.persistence.EntityManager;
 

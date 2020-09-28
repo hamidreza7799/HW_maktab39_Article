@@ -1,16 +1,13 @@
-import domains.User;
+import domains.app.User;
 import helper.SingleTonScanner;
-import repositories.*;
-import repositories.impl.*;
+import repositories.app.*;
+import repositories.app.impl.*;
 import services.*;
 import services.impl.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.Scanner;
 
 public class MainApp {
     private static ArticleRepository articleRepository;

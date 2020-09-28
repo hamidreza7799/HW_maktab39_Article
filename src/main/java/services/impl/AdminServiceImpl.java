@@ -1,15 +1,13 @@
 package services.impl;
 
-import domains.*;
+import domains.app.*;
 import embededClasses.Address;
 import helper.SingleTonScanner;
-import repositories.AdminRepository;
+import repositories.app.AdminRepository;
 import services.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class AdminServiceImpl extends WriterServiceImpl implements AdminService {

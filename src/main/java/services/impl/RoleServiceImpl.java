@@ -1,8 +1,8 @@
 package services.impl;
 
 import base.services.impl.BaseServiceImpl;
-import domains.Role;
-import repositories.RoleRepository;
+import domains.app.Role;
+import repositories.app.RoleRepository;
 import services.RoleService;
 
 public class RoleServiceImpl extends BaseServiceImpl<Role,Integer, RoleRepository> implements RoleService {

@@ -1,8 +1,8 @@
-package repositories.impl;
+package repositories.app.impl;
 
 import base.repositories.impl.BaseRepositoryImpl;
-import domains.User;
-import repositories.UserRepository;
+import domains.app.User;
+import repositories.app.UserRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

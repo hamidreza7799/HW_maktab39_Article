@@ -1,9 +1,11 @@
-package domains;
+package domains.metadata;
+
+import base.domains.BaseEntity;
 
 import javax.persistence.*;
 
 @Entity
-public class AppMetadata{
+public class AppMetadata extends BaseEntity<Integer> {
     @Id
     private Integer id = 1;
     @Lob

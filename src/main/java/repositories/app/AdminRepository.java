@@ -1,4 +1,4 @@
-package repositories;
+package repositories.app;
 
 public interface AdminRepository extends WriterRepository{
 }

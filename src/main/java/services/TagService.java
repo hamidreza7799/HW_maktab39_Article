@@ -1,7 +1,7 @@
 package services;
 
 import base.services.BaseService;
-import domains.Tag;
+import domains.app.Tag;
 
 import java.util.Set;
 

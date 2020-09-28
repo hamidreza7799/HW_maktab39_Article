@@ -1,4 +1,4 @@
-package domains;
+package domains.app;
 
 import base.domains.BaseEntity;
 import embededClasses.Address;

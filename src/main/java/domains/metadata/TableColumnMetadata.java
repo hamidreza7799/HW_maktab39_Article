@@ -1,9 +1,11 @@
-package domains;
+package domains.metadata;
+
+import base.domains.BaseEntity;
 
 import javax.persistence.*;
 
 @Entity
-public class TablecolumnMetadata {
+public class TableColumnMetadata extends BaseEntity<Integer> {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne(optional = false)

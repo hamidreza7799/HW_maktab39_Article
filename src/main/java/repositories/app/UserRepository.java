@@ -1,7 +1,7 @@
-package repositories;
+package repositories.app;
 
 import base.repositories.BaseRepository;
-import domains.User;
+import domains.app.User;
 
 public interface UserRepository extends BaseRepository<User , Integer> {
 

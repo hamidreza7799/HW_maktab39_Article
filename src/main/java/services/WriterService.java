@@ -1,6 +1,6 @@
 package services;
 
-import domains.User;
+import domains.app.User;
 
 public interface WriterService extends UserService{
 
